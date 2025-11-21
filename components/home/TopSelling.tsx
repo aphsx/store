@@ -1,4 +1,5 @@
 import ProductCard from '@/components/ui/ProductCard';
+import ScrollReveal from '@/components/ui/ScrollReveal';
 import { products } from '@/lib/data/products';
 import Link from 'next/link';
 
@@ -7,6 +8,7 @@ export default function TopSelling() {
 
   return (
     <section className="py-20 bg-gray-50">
+      <ScrollReveal direction="right">
       <div className="container mx-auto px-4 lg:px-8">
         <h2 className="text-3xl md:text-5xl font-bold text-center mb-16">
           TOP SELLING
@@ -27,6 +29,7 @@ export default function TopSelling() {
           </Link>
         </div>
       </div>
+      </ScrollReveal>
     </section>
   );
 }

@@ -1,4 +1,5 @@
 import ProductCard from '@/components/ui/ProductCard';
+import ScrollReveal from '@/components/ui/ScrollReveal';
 import { products } from '@/lib/data/products';
 import Link from 'next/link';
 
@@ -7,6 +8,7 @@ export default function NewArrivals() {
 
   return (
     <section className="py-20 bg-white">
+      <ScrollReveal>
       <div className="container mx-auto px-4 lg:px-8">
         <h2 className="text-3xl md:text-5xl font-bold text-center mb-16">
           NEW ARRIVALS
@@ -27,6 +29,7 @@ export default function NewArrivals() {
           </Link>
         </div>
       </div>
+      </ScrollReveal>
     </section>
   );
 }

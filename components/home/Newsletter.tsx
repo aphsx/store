@@ -2,6 +2,7 @@
 
 import { Mail } from 'lucide-react';
 import { useState } from 'react';
+import ScrollReveal from '@/components/ui/ScrollReveal';
 
 export default function Newsletter() {
   const [email, setEmail] = useState('');
@@ -14,6 +15,7 @@ export default function Newsletter() {
 
   return (
     <section className="py-20 bg-white">
+      <ScrollReveal direction="right">
       <div className="container mx-auto px-4 lg:px-8">
         <div className="bg-black rounded-2xl px-6 md:px-12 py-10">
           <div className="max-w-4xl mx-auto">
@@ -51,6 +53,7 @@ export default function Newsletter() {
           </div>
         </div>
       </div>
+      </ScrollReveal>
     </section>
   );
 }

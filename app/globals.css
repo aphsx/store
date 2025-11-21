@@ -60,6 +60,41 @@ a, button {
   }
 }
 
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .animate-fadeIn {
   animation: fadeIn 0.6s ease-out;
+}
+
+/* Scroll reveal animation - Slide from side with scale */
+.scroll-reveal {
+  transform: translateX(-50px) scale(0.95);
+  opacity: 0;
+  transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.scroll-reveal.is-visible {
+  transform: translateX(0) scale(1);
+  opacity: 1;
+}
+
+/* Alternative: Slide from right for even sections */
+.scroll-reveal-right {
+  transform: translateX(50px) scale(0.95);
+  opacity: 0;
+  transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.scroll-reveal-right.is-visible {
+  transform: translateX(0) scale(1);
+  opacity: 1;
 }
