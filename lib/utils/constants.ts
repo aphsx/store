@@ -1,7 +1,7 @@
-export const SITE_NAME = 'SHOP.COM';
+export const SITE_NAME = 'RIDGEBACK';
 
 export const NAV_LINKS = [
-  { label: 'home', href: '/' },
+  { label: 'Home', href: '/' },
   { label: 'Shop', href: '/shop' },
-  { label: 'about', href: '/about' },
+  { label: 'About', href: '/about' },
 ];
