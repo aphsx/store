@@ -3,7 +3,10 @@
     "allow": [
       "Bash(npm install:*)",
       "Bash(npm run dev:*)",
-      "Bash(npx next build:*)"
+      "Bash(npx next build:*)",
+      "Bash(cat:*)",
+      "Bash(taskkill /F /PID 6172)",
+      "Bash(taskkill //F //PID 6172)"
     ],
     "deny": [],
     "ask": []

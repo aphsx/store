@@ -4,10 +4,12 @@ import Link from 'next/link';
 import { SITE_NAME, NAV_LINKS } from '@/lib/utils/constants';
 import { ShoppingCart, User, Search, Menu, X } from 'lucide-react';
 import { useState } from 'react';
+import { useCart } from '@/lib/context/CartContext';
 
 export default function Header() {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { getTotalItems } = useCart();
 
   return (
     <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-200 shadow-sm">
@@ -65,12 +67,14 @@ export default function Header() {
             </button>
 
             {/* Cart Button with Badge */}
-            <button className="relative p-2 hover:bg-gray-100 rounded-full transition-colors">
+            <Link href="/cart" className="relative p-2 hover:bg-gray-100 rounded-full transition-colors">
               <ShoppingCart className="w-5 h-5" />
-              <span className="absolute top-0 right-0 w-5 h-5 bg-black text-white text-xs flex items-center justify-center rounded-full">
-                0
-              </span>
-            </button>
+              {getTotalItems() > 0 && (
+                <span className="absolute top-0 right-0 w-5 h-5 bg-black text-white text-xs flex items-center justify-center rounded-full">
+                  {getTotalItems()}
+                </span>
+              )}
+            </Link>
 
             {/* User Button */}
             <button className="hidden md:block p-2 hover:bg-gray-100 rounded-full transition-colors">
