@@ -1,16 +1,14 @@
 import HeroSection from '@/components/home/HeroSection';
-import NewArrivals from '@/components/home/NewArrivals';
-import TopSelling from '@/components/home/TopSelling';
-import BrowseByStyle from '@/components/home/BrowseByStyle';
+import ServicesSection from '@/components/home/ServicesSection';
+import ProductCategories from '@/components/home/ProductCategories';
 import Newsletter from '@/components/home/Newsletter';
 
 export default function Home() {
   return (
     <main>
       <HeroSection />
-      <NewArrivals />
-      <TopSelling />
-      <BrowseByStyle />
+      <ServicesSection />
+      <ProductCategories />
       <Newsletter />
     </main>
   );

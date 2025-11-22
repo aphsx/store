@@ -23,8 +23,11 @@ export default function Newsletter() {
               {/* Left side - Text */}
               <div>
                 <h2 className="text-2xl md:text-3xl font-bold text-white">
-                  STAY UPTO DATE ABOUT<br />OUR LATEST OFFERS
+                  รับข้อมูลโปรโมชั่นและ<br />ข่าวสารล่าสุด
                 </h2>
+                <p className="text-gray-300 text-sm mt-3">
+                  อัพเดตสินค้าใหม่ โปรโมชั่นพิเศษ และเคล็ดลับการผลิตเสื้อผ้า
+                </p>
               </div>
 
               {/* Right side - Form */}
@@ -34,7 +37,7 @@ export default function Newsletter() {
                     <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
                     <input
                       type="email"
-                      placeholder="Enter Your Email Address"
+                      placeholder="อีเมลของคุณ"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       className="w-full pl-11 pr-4 py-3 rounded-full bg-white text-sm text-black outline-none"
@@ -45,7 +48,7 @@ export default function Newsletter() {
                     type="submit"
                     className="w-full bg-white text-black font-medium py-3 rounded-full hover:bg-gray-100 transition-colors text-sm"
                   >
-                    Subscribe to Newsletter
+                    ติดตามข่าวสาร
                   </button>
                 </form>
               </div>
