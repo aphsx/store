@@ -7,7 +7,7 @@ const categories = [
     id: 'polo',
     name: 'เสื้อโปโล',
     nameEn: 'Polo Shirts',
-    description: 'เสื้อโปโลคุณภาพดี เหมาะสำหรับยูนิฟอร์มบริษัท',
+    description: 'เสื้อโปโลตัดต่อ กุ้น แขนจั้ม',
     icon: 'Shirt',
     minOrder: '50 ตัว',
     color: 'from-blue-500 to-blue-600'
@@ -16,7 +16,7 @@ const categories = [
     id: 't-shirt',
     name: 'เสื้อยืด',
     nameEn: 'T-Shirts',
-    description: 'เสื้อยืดคุณภาพ สกรีนลายได้สวย',
+    description: 'เสื้อยืดคอกลมพร้อมสกรีน',
     icon: 'Shirt',
     minOrder: '50 ตัว',
     color: 'from-red-500 to-red-600'
@@ -106,8 +106,8 @@ export default function ProductCategories() {
                 direction="right"
                 delay={index * 0.05}
               >
-                <Link href={`/shop?category=${category.id}`}>
-                  <div className="group relative bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                <Link href={`/shop?category=${category.id}`} className="h-full block">
+                  <div className="group relative bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 h-full flex flex-col">
                     {/* Gradient Header */}
                     <div className={`bg-gradient-to-r ${category.color} p-6 text-white relative overflow-hidden`}>
                       <div className="absolute top-0 right-0 opacity-20">
@@ -123,8 +123,8 @@ export default function ProductCategories() {
                     </div>
 
                     {/* Content */}
-                    <div className="p-6">
-                      <p className="text-sm text-gray-600 mb-4 leading-relaxed">
+                    <div className="p-6 flex-1 flex flex-col">
+                      <p className="text-sm text-gray-600 mb-4 leading-relaxed flex-1 min-h-[3rem]">
                         {category.description}
                       </p>
                       <div className="flex items-center justify-between text-xs">

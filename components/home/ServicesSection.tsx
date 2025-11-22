@@ -30,19 +30,20 @@ export default function ServicesSection() {
                 key={service.id}
                 direction="left"
                 delay={index * 0.1}
+                className="h-full"
               >
-                <div className="bg-gray-50 rounded-xl p-6 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 group">
+                <div className="bg-gray-50 rounded-xl p-6 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 group h-full flex flex-col">
                   <div className="bg-black text-white w-14 h-14 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                     {Icon && <Icon className="w-7 h-7" />}
                   </div>
 
                   <h3 className="text-xl font-bold mb-2">{service.name}</h3>
                   <p className="text-sm text-gray-500 mb-4">{service.nameEn}</p>
-                  <p className="text-sm text-gray-600 mb-4 leading-relaxed">
+                  <p className="text-sm text-gray-600 mb-4 leading-relaxed min-h-[2.5rem]">
                     {service.description}
                   </p>
 
-                  <div className="space-y-2 mb-4">
+                  <div className="space-y-2 mb-4 flex-1">
                     {service.features.slice(0, 3).map((feature, i) => (
                       <div key={i} className="flex items-start text-sm text-gray-700">
                         <span className="text-black mr-2">•</span>
@@ -52,7 +53,7 @@ export default function ServicesSection() {
                   </div>
 
                   {service.minQuantity && (
-                    <div className="text-xs text-gray-500 pt-3 border-t border-gray-200">
+                    <div className="text-xs text-gray-500 pt-3 border-t border-gray-200 mt-auto">
                       สั่งขั้นต่ำ: {service.minQuantity} ชิ้น
                     </div>
                   )}
