@@ -22,15 +22,6 @@ const categories = [
     color: 'from-red-500 to-red-600'
   },
   {
-    id: 'jacket',
-    name: 'แจ๊คเก็ต',
-    nameEn: 'Jackets',
-    description: 'แจ๊คเก็ตกันลมกันฝน ทันสมัย',
-    icon: 'Shirt',
-    minOrder: '30 ตัว',
-    color: 'from-gray-700 to-gray-800'
-  },
-  {
     id: 'sportswear',
     name: 'ชุดกีฬา',
     nameEn: 'Sportswear',
@@ -40,41 +31,41 @@ const categories = [
     color: 'from-green-500 to-green-600'
   },
   {
-    id: 'bag',
-    name: 'กระเป๋าผ้า',
+    id: 'tote-bag',
+    name: 'หมอน',
     nameEn: 'Tote Bags',
-    description: 'กระเป๋าผ้าแคนวาส เหมาะสำหรับของพรีเมี่ยม',
+    description: 'หมอนไดคัทพิมพ์ลาย',
     icon: 'ShoppingBag',
     minOrder: '100 ใบ',
     color: 'from-yellow-500 to-yellow-600'
   },
   {
-    id: 'apron',
-    name: 'ผ้ากันเปื้อน',
-    nameEn: 'Aprons',
-    description: 'ผ้ากันเปื้อนสำหรับครัว ร้านอาหาร คาเฟ่',
-    icon: 'ChefHat',
-    minOrder: '50 ตัว',
+    id: 'another-product',
+    name: 'another product',
+    nameEn: 'Another Product',
+    description: 'รายละเอียดสินค้าเพิ่มเติม ติดต่อเราเพื่อสอบถาม',
+    icon: '',
+    minOrder: '',
     color: 'from-orange-500 to-orange-600'
   },
-  {
-    id: 'cap',
-    name: 'หมวก',
-    nameEn: 'Caps',
-    description: 'หมวกแก๊ปทรงสวย ปักโลโก้ได้',
-    icon: 'Shirt',
-    minOrder: '100 ใบ',
-    color: 'from-purple-500 to-purple-600'
-  },
-  {
-    id: 'umbrella',
-    name: 'ร่ม',
-    nameEn: 'Umbrellas',
-    description: 'ร่มพับและร่มกอลฟ์ พิมพ์โลโก้ได้',
-    icon: 'Umbrella',
-    minOrder: '50 คัน',
-    color: 'from-pink-500 to-pink-600'
-  }
+  // {
+  //   id: 'cap',
+  //   name: 'หมวก',
+  //   nameEn: 'Caps',
+  //   description: 'หมวกแก๊ปทรงสวย ปักโลโก้ได้',
+  //   icon: 'Shirt',
+  //   minOrder: '100 ใบ',
+  //   color: 'from-purple-500 to-purple-600'
+  // },
+  // {
+  //   id: 'umbrella',
+  //   name: 'ร่ม',
+  //   nameEn: 'Umbrellas',
+  //   description: 'ร่มพับและร่มกอลฟ์ พิมพ์โลโก้ได้',
+  //   icon: 'Umbrella',
+  //   minOrder: '50 คัน',
+  //   color: 'from-pink-500 to-pink-600'
+  // }
 ];
 
 const iconMap: Record<string, any> = {
