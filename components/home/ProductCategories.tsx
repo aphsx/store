@@ -97,7 +97,7 @@ export default function ProductCategories() {
                 direction="right"
                 delay={index * 0.05}
               >
-                <Link href={`/shop?category=${category.id}`} className="h-full block">
+                <Link href={`/products/${category.id}`} className="h-full block">
                   <div className="group relative bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 h-full flex flex-col">
                     {/* Gradient Header */}
                     <div className={`bg-gradient-to-r ${category.color} p-6 text-white relative overflow-hidden`}>
