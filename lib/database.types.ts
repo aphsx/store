@@ -68,6 +68,47 @@ export interface Database {
           updated_at?: string
         }
       }
+      product_categories: {
+        Row: {
+          id: string
+          name: string
+          name_en: string
+          description: string
+          icon: string | null
+          min_order: string | null
+          color: string
+          display_order: number
+          is_active: boolean
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id: string
+          name: string
+          name_en: string
+          description: string
+          icon?: string | null
+          min_order?: string | null
+          color: string
+          display_order?: number
+          is_active?: boolean
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          name?: string
+          name_en?: string
+          description?: string
+          icon?: string | null
+          min_order?: string | null
+          color?: string
+          display_order?: number
+          is_active?: boolean
+          created_at?: string
+          updated_at?: string
+        }
+      }
     }
     Views: {
       [_ in never]: never
