@@ -1,19 +1,35 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import ProductCard from '@/components/ui/ProductCard';
 import FilterSidebar from '@/components/shop/FilterSidebar';
-import { products } from '@/lib/data/products';
+import { getAllProducts } from '@/lib/services/products.service';
+import type { Product } from '@/lib/types';
 import { Filter } from 'lucide-react';
 
 type SortOption = 'default' | 'price-low' | 'price-high' | 'min-order';
 type CategoryFilter = 'all' | 'polo' | 't-shirt' | 'jacket' | 'sportswear' | 'bag' | 'apron' | 'cap' | 'umbrella';
 
 export default function ShopPage() {
+  const [products, setProducts] = useState<Product[]>([]);
+  const [loading, setLoading] = useState(true);
   const [sortBy, setSortBy] = useState<SortOption>('default');
   const [styleFilter, setStyleFilter] = useState<CategoryFilter>('all');
   const [priceRange, setPriceRange] = useState<[number, number]>([0, 500]);
   const [showFilters, setShowFilters] = useState(false);
+
+  useEffect(() => {
+    async function loadProducts() {
+      const { data, error } = await getAllProducts();
+      if (data) {
+        setProducts(data);
+      } else if (error) {
+        console.error('Error loading products:', error);
+      }
+      setLoading(false);
+    }
+    loadProducts();
+  }, []);
 
   const filteredAndSortedProducts = useMemo(() => {
     let filtered = [...products];
@@ -96,15 +112,21 @@ export default function ShopPage() {
               </button>
             </div>
 
-            {/* Results Count */}
-            <div className="mb-6">
-              <p className="text-gray-600">
-                แสดง <span className="font-semibold">{filteredAndSortedProducts.length}</span> รายการ
-              </p>
-            </div>
+            {loading ? (
+              <div className="flex justify-center items-center py-20">
+                <div className="w-16 h-16 border-4 border-gray-200 border-t-blue-600 rounded-full animate-spin"></div>
+              </div>
+            ) : (
+              <>
+                {/* Results Count */}
+                <div className="mb-6">
+                  <p className="text-gray-600">
+                    แสดง <span className="font-semibold">{filteredAndSortedProducts.length}</span> รายการ
+                  </p>
+                </div>
 
-            {/* Products Grid */}
-            {filteredAndSortedProducts.length > 0 ? (
+                {/* Products Grid */}
+                {filteredAndSortedProducts.length > 0 ? (
               <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6">
                 {filteredAndSortedProducts.map((product) => (
                   <ProductCard key={product.id} product={product} />
@@ -124,6 +146,8 @@ export default function ShopPage() {
                   ล้างตัวกรอง
                 </button>
               </div>
+            )}
+              </>
             )}
           </div>
         </div>

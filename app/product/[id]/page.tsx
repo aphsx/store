@@ -1,9 +1,10 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import Link from 'next/link';
-import { products } from '@/lib/data/products';
+import { getProductById, getProductsByStyle } from '@/lib/services/products.service';
+import type { Product } from '@/lib/types';
 import ProductCard from '@/components/ui/ProductCard';
 import { Star, Minus, Plus, ShoppingCart } from 'lucide-react';
 import { useCart } from '@/lib/context/CartContext';
@@ -14,10 +15,41 @@ export default function ProductDetailPage() {
   const productId = params.id as string;
   const { addToCart } = useCart();
 
-  const product = products.find(p => p.id === productId);
+  const [product, setProduct] = useState<Product | null>(null);
+  const [relatedProducts, setRelatedProducts] = useState<Product[]>([]);
+  const [loading, setLoading] = useState(true);
   const [selectedSize, setSelectedSize] = useState('');
   const [selectedColor, setSelectedColor] = useState('');
   const [quantity, setQuantity] = useState(1);
+
+  useEffect(() => {
+    async function loadProduct() {
+      const { data, error } = await getProductById(productId);
+      if (data) {
+        setProduct(data);
+
+        // Load related products
+        if (data.style) {
+          const { data: related } = await getProductsByStyle(data.style);
+          if (related) {
+            setRelatedProducts(related.filter(p => p.id !== productId).slice(0, 4));
+          }
+        }
+      } else if (error) {
+        console.error('Error loading product:', error);
+      }
+      setLoading(false);
+    }
+    loadProduct();
+  }, [productId]);
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-white flex items-center justify-center">
+        <div className="w-16 h-16 border-4 border-gray-200 border-t-blue-600 rounded-full animate-spin"></div>
+      </div>
+    );
+  }
 
   if (!product) {
     return (
@@ -31,11 +63,6 @@ export default function ProductDetailPage() {
       </div>
     );
   }
-
-  // Get related products (same style, different product)
-  const relatedProducts = products
-    .filter(p => p.style === product.style && p.id !== product.id)
-    .slice(0, 4);
 
   const handleQuantityChange = (type: 'increment' | 'decrement') => {
     if (type === 'increment') {

@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Shirt, ShoppingBag, Umbrella, ChefHat } from 'lucide-react';
 import ScrollReveal from '@/components/ui/ScrollReveal';
-import { getAllCategories } from '@/lib/services/categories';
+import { getAllCategoriesRaw } from '@/lib/services/categories.service';
 import { Database } from '@/lib/database.types';
 
 type Category = Database['public']['Tables']['product_categories']['Row'];
@@ -22,7 +22,7 @@ export default function ProductCategories() {
 
   useEffect(() => {
     async function loadCategories() {
-      const { data, error } = await getAllCategories();
+      const { data, error } = await getAllCategoriesRaw();
       if (data) {
         setCategories(data);
       } else if (error) {
