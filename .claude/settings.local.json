@@ -7,7 +7,8 @@
       "Bash(cat:*)",
       "Bash(taskkill /F /PID 6172)",
       "Bash(taskkill //F //PID 6172)",
-      "Bash(mkdir:*)"
+      "Bash(mkdir:*)",
+      "Bash(test:*)"
     ],
     "deny": [],
     "ask": []

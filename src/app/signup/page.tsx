@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { useAuth } from '@/contexts/AuthContext'
@@ -12,8 +12,14 @@ export default function SignupPage() {
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
   const [success, setSuccess] = useState(false)
-  const { signUp } = useAuth()
+  const { signUp, user } = useAuth()
   const router = useRouter()
+
+  useEffect(() => {
+    if (user) {
+      router.push('/')
+    }
+  }, [user, router])
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -35,7 +41,7 @@ export default function SignupPage() {
       const { error } = await signUp(email, password)
       if (error) throw error
       setSuccess(true)
-      setTimeout(() => router.push('/login'), 2000)
+      setTimeout(() => router.push('/'), 2000)
     } catch (error: any) {
       setError(error.message || 'Failed to create account')
     } finally {
@@ -59,7 +65,7 @@ export default function SignupPage() {
           )}
           {success && (
             <div className="bg-green-50 border border-green-200 text-green-600 px-4 py-3 rounded">
-              Account created successfully! Check your email to verify your account.
+              Account created successfully! Redirecting...
             </div>
           )}
           <div className="rounded-md shadow-sm space-y-4">

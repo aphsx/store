@@ -5,6 +5,7 @@ import { SITE_NAME, NAV_LINKS } from '@/lib/utils/constants';
 import { ShoppingCart, User, Search, Menu, X } from 'lucide-react';
 import { useState } from 'react';
 import { useCart } from '@/lib/context/CartContext';
+import UserMenu from './UserMenu';
 
 export default function Header() {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
@@ -76,10 +77,10 @@ export default function Header() {
               )}
             </Link>
 
-            {/* User Button */}
-            <button className="hidden md:block p-2 hover:bg-gray-100 rounded-full transition-colors">
-              <User className="w-5 h-5" />
-            </button>
+            {/* User Menu */}
+            <div className="hidden md:block">
+              <UserMenu />
+            </div>
 
             {/* Mobile Menu Button */}
             <button
