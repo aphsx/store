@@ -2,10 +2,9 @@
 
 import Link from 'next/link';
 import { SITE_NAME, NAV_LINKS } from '@/lib/utils/constants';
-import { ShoppingCart, User, Search, Menu, X } from 'lucide-react';
+import { ShoppingCart, Search, Menu, X } from 'lucide-react';
 import { useState } from 'react';
 import { useCart } from '@/lib/context/CartContext';
-import UserMenu from './UserMenu';
 
 export default function Header() {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
@@ -77,11 +76,6 @@ export default function Header() {
               )}
             </Link>
 
-            {/* User Menu */}
-            <div className="hidden md:block">
-              <UserMenu />
-            </div>
-
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -106,14 +100,6 @@ export default function Header() {
                   {link.label}
                 </Link>
               ))}
-              <Link
-                href="/account"
-                className="text-lg font-medium text-gray-700 hover:text-black transition-colors py-2 flex items-center gap-2"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                <User className="w-5 h-5" />
-                My Account
-              </Link>
             </nav>
           </div>
         )}
